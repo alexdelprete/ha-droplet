@@ -4,7 +4,11 @@ from __future__ import annotations
 
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 
-from custom_components.droplet.const import CONF_WATER_LEAK_THRESHOLD, CONF_WATER_TARIFF, DOMAIN
+from custom_components.droplet_plus.const import (
+    CONF_WATER_LEAK_THRESHOLD,
+    CONF_WATER_TARIFF,
+    DOMAIN,
+)
 from homeassistant.components.number import ATTR_VALUE, SERVICE_SET_VALUE
 from homeassistant.const import ATTR_ENTITY_ID, EntityCategory
 from homeassistant.core import HomeAssistant

@@ -26,11 +26,11 @@ jobs:
 
           # Extract version from manifest.json
           MANIFEST_VERSION=$(yq -r '.version' \
-            "${{ github.workspace }}/custom_components/droplet/manifest.json")
+            "${{ github.workspace }}/custom_components/droplet_plus/manifest.json")
 
           # Extract VERSION from const.py
           CONST_VERSION=$(grep -E "^VERSION = " \
-            "${{ github.workspace }}/custom_components/droplet/const.py" \
+            "${{ github.workspace }}/custom_components/droplet_plus/const.py" \
             | sed 's/VERSION = "\(.*\)"/\1/')
 
           echo "Tag version:      $TAG_VERSION"
@@ -58,10 +58,10 @@ jobs:
       - name: "ZIP the integration directory"
         shell: "bash"
         run: |
-          cd "${{ github.workspace }}/custom_components/droplet"
-          zip droplet.zip -r ./
+          cd "${{ github.workspace }}/custom_components/droplet_plus"
+          zip droplet_plus.zip -r ./
 
       - name: "Upload the ZIP file to the release"
         uses: softprops/action-gh-release@v2.5.0
         with:
-          files: ${{ github.workspace }}/custom_components/droplet/droplet.zip
+          files: ${{ github.workspace }}/custom_components/droplet_plus/droplet_plus.zip

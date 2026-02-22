@@ -7,7 +7,7 @@ from unittest.mock import AsyncMock, MagicMock, patch
 import pytest
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 
-from custom_components.droplet.const import (
+from custom_components.droplet_plus.const import (
     CONF_DEVICE_ID,
     CONF_WATER_LEAK_THRESHOLD,
     CONF_WATER_TARIFF,
@@ -117,7 +117,7 @@ def mock_droplet_device() -> MagicMock:
 def mock_droplet(mock_droplet_device: MagicMock):
     """Patch pydroplet.Droplet constructor to return mock device."""
     with patch(
-        "custom_components.droplet.coordinator.Droplet",
+        "custom_components.droplet_plus.coordinator.Droplet",
         return_value=mock_droplet_device,
     ):
         yield mock_droplet_device
@@ -126,7 +126,7 @@ def mock_droplet(mock_droplet_device: MagicMock):
 @pytest.fixture
 def mock_discovery():
     """Patch pydroplet.DropletDiscovery for config flow tests."""
-    with patch("custom_components.droplet.config_flow.DropletDiscovery") as mock_cls:
+    with patch("custom_components.droplet_plus.config_flow.DropletDiscovery") as mock_cls:
         instance = mock_cls.return_value
         instance.try_connect = AsyncMock(return_value=True)
         instance.get_device_id = AsyncMock(return_value=TEST_DEVICE_ID)

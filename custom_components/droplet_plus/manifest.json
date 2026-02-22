@@ -1,6 +1,6 @@
 {
-  "domain": "droplet",
-  "name": "Droplet",
+  "domain": "droplet_plus",
+  "name": "Droplet Plus",
   "codeowners": ["@alexdelprete"],
   "config_flow": true,
   "documentation": "https://github.com/alexdelprete/ha-droplet",

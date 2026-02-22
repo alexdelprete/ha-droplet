@@ -6,7 +6,7 @@ from unittest.mock import MagicMock
 
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 
-from custom_components.droplet.const import DOMAIN, EVENT_WATER_LEAK_DETECTED
+from custom_components.droplet_plus.const import DOMAIN, EVENT_WATER_LEAK_DETECTED
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.issue_registry import async_get as async_get_issue_registry
 from homeassistant.util import dt as dt_util

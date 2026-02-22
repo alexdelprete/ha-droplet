@@ -24,7 +24,7 @@ A Home Assistant custom integration for Droplet.
 ### File Structure
 
 ```text
-custom_components/droplet/
+custom_components/droplet_plus/
 ├── __init__.py          # Integration setup
 ├── config_flow.py       # Config flow
 ├── const.py             # Constants
@@ -192,8 +192,8 @@ in manifest.json and const.py.
 
 ### Version Locations (Must Be Synchronized)
 
-1. `custom_components/droplet/manifest.json` → `"version": "X.Y.Z"`
-1. `custom_components/droplet/const.py` → `VERSION = "X.Y.Z"`
+1. `custom_components/droplet_plus/manifest.json` → `"version": "X.Y.Z"`
+1. `custom_components/droplet_plus/const.py` → `VERSION = "X.Y.Z"`
 
 ### Complete Release Workflow
 

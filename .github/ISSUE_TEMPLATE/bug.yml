@@ -61,7 +61,7 @@ body:
         logger:
           default: warning
           logs:
-            custom_components.droplet: debug
+            custom_components.droplet_plus: debug
         ```
       render: shell
     validations:

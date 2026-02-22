@@ -6,8 +6,8 @@ This document describes the release workflow for the Droplet integration.
 
 Versions must be synchronized in:
 
-1. `custom_components/droplet/manifest.json` -> `"version": "X.Y.Z"`
-2. `custom_components/droplet/const.py` -> `VERSION = "X.Y.Z"`
+1. `custom_components/droplet_plus/manifest.json` -> `"version": "X.Y.Z"`
+2. `custom_components/droplet_plus/const.py` -> `VERSION = "X.Y.Z"`
 3. Git tag -> `vX.Y.Z`
 
 ## Release Process

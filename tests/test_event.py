@@ -6,7 +6,7 @@ from unittest.mock import MagicMock
 
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 
-from custom_components.droplet.const import DOMAIN
+from custom_components.droplet_plus.const import DOMAIN
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers import entity_registry as er
 from homeassistant.util import dt as dt_util

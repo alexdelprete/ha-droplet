@@ -35,7 +35,7 @@ A Home Assistant custom integration for Droplet.
 ### Manual Installation
 
 1. Download the latest release from [GitHub Releases](https://github.com/alexdelprete/ha-droplet/releases)
-1. Extract the `custom_components/droplet` folder
+1. Extract the `custom_components/droplet_plus` folder
 1. Copy it to your Home Assistant `config/custom_components/` directory
 1. Restart Home Assistant
 

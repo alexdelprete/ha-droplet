@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Final
 
-DOMAIN: Final = "droplet"
+DOMAIN: Final = "droplet_plus"
 VERSION: Final = "0.1.0"
 MANUFACTURER: Final = "Hydrific"
 

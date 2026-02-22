@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from unittest.mock import AsyncMock, MagicMock
 
-from custom_components.droplet.const import (
+from custom_components.droplet_plus.const import (
     CONF_DEVICE_ID,
     CONF_WATER_LEAK_THRESHOLD,
     CONF_WATER_TARIFF,

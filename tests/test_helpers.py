@@ -6,7 +6,7 @@ from datetime import UTC, datetime
 
 import pytest
 
-from custom_components.droplet.helpers import (
+from custom_components.droplet_plus.helpers import (
     compute_average,
     compute_max,
     compute_min,

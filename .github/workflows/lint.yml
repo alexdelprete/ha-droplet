@@ -39,4 +39,4 @@ jobs:
       - name: Install dependencies for ty
         run: uv pip install -e ".[dev]" --system
       - name: Run ty
-        run: uvx ty check -vv --python $(which python) custom_components/droplet
+        run: uvx ty check -vv --python $(which python) custom_components/droplet_plus
