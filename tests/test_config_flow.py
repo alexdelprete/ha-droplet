@@ -8,8 +8,6 @@ from custom_components.droplet.const import (
     CONF_DEVICE_ID,
     CONF_WATER_LEAK_THRESHOLD,
     CONF_WATER_TARIFF,
-    DEFAULT_WATER_LEAK_THRESHOLD,
-    DEFAULT_WATER_TARIFF,
     DOMAIN,
 )
 from homeassistant import config_entries

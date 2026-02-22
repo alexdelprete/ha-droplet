@@ -90,7 +90,9 @@ async def test_hourly_boundary_crossing(
 
     # Hourly baseline should be reset (accumulator was reset by mock side_effect)
     assert coordinator._baseline_hourly == 0.0
-    mock_droplet.reset_accumulator.assert_any_call("hourly", mock_droplet.reset_accumulator.call_args_list[0][0][1])
+    mock_droplet.reset_accumulator.assert_any_call(
+        "hourly", mock_droplet.reset_accumulator.call_args_list[0][0][1]
+    )
     # Hourly consumption buffer should have the finalized hour
     assert len(coordinator._hourly_consumption) == 1
     assert coordinator._hourly_consumption[0][1] == pytest.approx(1.0)
@@ -332,9 +334,7 @@ async def test_accumulators_registered_on_setup(
     mock_droplet: MagicMock,
 ) -> None:
     """Test pydroplet accumulators are registered during setup."""
-    registered_names = [
-        call[0][0] for call in mock_droplet.add_accumulator.call_args_list
-    ]
+    registered_names = [call[0][0] for call in mock_droplet.add_accumulator.call_args_list]
     assert "hourly" in registered_names
     assert "daily" in registered_names
     assert "weekly" in registered_names
