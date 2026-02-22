@@ -204,18 +204,19 @@ in manifest.json and const.py.
 | Step | Tool           | Action                                                                  |
 | ---- | -------------- | ----------------------------------------------------------------------- |
 | 1    | Edit           | Update `CHANGELOG.md` with version summary                              |
-| 2    | Edit           | Ensure `manifest.json` and `const.py` have correct version              |
-| 3    | Bash           | Run linting: `uvx pre-commit run --all-files`                           |
-| 4    | Bash           | `git add . && git commit -m "..."`                                      |
-| 5    | Bash           | `git push`                                                              |
-| 6    | **STOP**       | Wait for user "tag and release" command                                 |
-| 7    | **CI Check**   | Verify ALL CI workflows pass (see CI Verification below)                |
-| 8    | **Checklist**  | Display Release Readiness Checklist (see below)                         |
-| 9    | Bash           | `git tag -a vX.Y.Z -m "Release vX.Y.Z"`                                |
-| 10   | Bash           | `git push --tags`                                                       |
-| 11   | gh CLI         | `gh release create vX.Y.Z --title "vX.Y.Z" --notes "$(RELEASE_NOTES)"` |
-| 12   | GitHub Actions | Validates versions match, then auto-uploads ZIP asset                   |
-| 13   | Edit           | Bump versions in `manifest.json` and `const.py` to next version         |
+| 2    | Write          | Create `docs/releases/vX.Y.Z.md` release notes (see format below)       |
+| 3    | Edit           | Ensure `manifest.json` and `const.py` have correct version              |
+| 4    | Bash           | Run linting: `uvx pre-commit run --all-files`                           |
+| 5    | Bash           | `git add . && git commit -m "..."`                                      |
+| 6    | Bash           | `git push`                                                              |
+| 7    | **STOP**       | Wait for user "tag and release" command                                 |
+| 8    | **CI Check**   | Verify ALL CI workflows pass (see CI Verification below)                |
+| 9    | **Checklist**  | Display Release Readiness Checklist (see below)                         |
+| 10   | Bash           | `git tag -a vX.Y.Z -m "Release vX.Y.Z"`                                 |
+| 11   | Bash           | `git push --tags`                                                       |
+| 12   | gh CLI         | Create release using `docs/releases/vX.Y.Z.md` as the release body      |
+| 13   | GitHub Actions | Validates versions match, then auto-uploads ZIP asset                   |
+| 14   | Edit           | Bump versions in `manifest.json` and `const.py` to next version         |
 
 ### CI Verification (MANDATORY)
 
@@ -250,29 +251,31 @@ in manifest.json and const.py.
 
 ### Release Notes Format (MANDATORY)
 
-When creating a release, use this format for the release notes:
+Create a release notes file at `docs/releases/vX.Y.Z.md` using this template.
+This file is then used as the body when creating the GitHub release.
 
 ```markdown
 # Release vX.Y.Z
 
-[![GitHub Downloads](https://img.shields.io/github/downloads/alexdelprete/ha-droplet/vX.Y.Z/total?style=for-the-badge)](https://github.com/alexdelprete/ha-droplet/releases/tag/vX.Y.Z)
+[![GitHub Downloads](https://img.shields.io/github/downloads/alexdelprete/ha-droplet-plus/vX.Y.Z/total?style=for-the-badge)](https://github.com/alexdelprete/ha-droplet-plus/releases/tag/vX.Y.Z)
 
 **Release Date:** YYYY-MM-DD
 
-**Type:** [Major/Minor/Patch] release - Brief description.
+**Type:** [Major/Minor/Patch/Beta] release - Brief description.
 
 ## What's Changed
 
-### ✨ Added
+### Added
 - Feature 1
 
-### 🔄 Changed
+### Changed
 - Change 1
 
-### 🐛 Fixed
+### Fixed
 - Fix 1
 
-**Full Changelog**: https://github.com/alexdelprete/ha-droplet/compare/vPREV...vX.Y.Z
+**Full Changelog**:
+[compare/vPREV...vX.Y.Z](https://github.com/alexdelprete/ha-droplet-plus/compare/vPREV...vX.Y.Z)
 ```
 
 ### Release Readiness Checklist (MANDATORY)
@@ -287,6 +290,7 @@ When creating a release, use this format for the release notes:
 | Version in `manifest.json` | X.Y.Z |
 | Version in `const.py` | X.Y.Z |
 | CHANGELOG.md updated | Updated |
+| `docs/releases/vX.Y.Z.md` created | Created |
 | GitHub Actions (lint/test/validate) | PASSING |
 | Working tree clean | Clean |
 | Git tag | vX.Y.Z created/pushed |
