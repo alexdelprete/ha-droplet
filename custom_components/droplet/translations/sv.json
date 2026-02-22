@@ -1,0 +1,46 @@
+{
+  "config": {
+    "step": {
+      "user": { "title": "Droplet", "description": "Konfigurera din Droplet-vattenmätare.", "data": { "host": "IP-adress", "token": "Parningskod" } },
+      "confirm": { "title": "Droplet", "description": "Droplet-enhet hittad på {host}. Ange parningskoden för att ansluta.", "data": { "token": "Parningskod" } },
+      "options": {
+        "title": "Droplet-alternativ",
+        "description": "Konfigurera vattentariff och känslighet för läckagedetektering.",
+        "data": {
+          "water_tariff": "Vattentariff",
+          "water_leak_threshold": "Tröskelvärde för läckagedetektering"
+        },
+        "data_description": {
+          "water_tariff": "Kostnad per volymenhet vatten (per m³ eller per gallon). Om satt till 0 rapporterar kostnadssensorer noll.",
+          "water_leak_threshold": "Minsta flödeshastighet (L/min) under vilken kontinuerligt flöde inte betraktas som läcka. T.ex. 0 = valfritt kontinuerligt flöde över 24h utlöser läckagevarning, 0,05 = ignorera flöden under 0,05 L/min."
+        }
+      },
+      "reconfigure": { "title": "Konfigurera om Droplet", "description": "Uppdatera anslutningsinställningarna för din Droplet-enhet.", "data": { "host": "IP-adress", "token": "Parningskod" } }
+    },
+    "error": { "cannot_connect": "Kan inte ansluta till Droplet-enheten. Kontrollera IP-adressen och parningskoden." },
+    "abort": { "already_configured": "Denna enhet är redan konfigurerad.", "unique_id_mismatch": "Enhets-ID:t matchar inte den befintliga konfigurationen." }
+  },
+  "options": { "step": { "init": { "title": "Droplet-alternativ", "description": "Konfigurera vattentariff och känslighet för läckagedetektering.", "data": { "water_tariff": "Vattentariff", "water_leak_threshold": "Tröskelvärde för läckagedetektering" }, "data_description": { "water_tariff": "Kostnad per volymenhet vatten (per m³ eller per gallon). Om satt till 0 rapporterar kostnadssensorer noll.", "water_leak_threshold": "Minsta flödeshastighet (L/min) under vilken kontinuerligt flöde inte betraktas som läcka. T.ex. 0 = valfritt kontinuerligt flöde över 24h utlöser läckagevarning, 0,05 = ignorera flöden under 0,05 L/min." } } } },
+  "entity": {
+    "sensor": {
+      "water_flow_rate": { "name": "Vattenflöde" }, "water_volume_delta": { "name": "Vattenvolymdelta" },
+      "server_status": { "name": "Serverstatus" }, "signal_quality": { "name": "Signalkvalitet" },
+      "water_consumption_hourly": { "name": "Vattenförbrukning per timme" }, "water_consumption_daily": { "name": "Vattenförbrukning dagligen" },
+      "water_consumption_weekly": { "name": "Vattenförbrukning veckovis" }, "water_consumption_monthly": { "name": "Vattenförbrukning månadsvis" },
+      "water_consumption_yearly": { "name": "Vattenförbrukning årligen" }, "water_consumption_lifetime": { "name": "Vattenförbrukning totalt" },
+      "water_cost_daily": { "name": "Vattenkostnad dagligen" }, "water_cost_weekly": { "name": "Vattenkostnad veckovis" },
+      "water_cost_monthly": { "name": "Vattenkostnad månadsvis" }, "water_cost_yearly": { "name": "Vattenkostnad årligen" },
+      "water_cost_lifetime": { "name": "Vattenkostnad totalt" },
+      "water_avg_flow_1h": { "name": "Medelflöde (1h)" }, "water_peak_flow_24h": { "name": "Toppflöde (24h)" },
+      "water_peak_flow_7d": { "name": "Toppflöde (7d)" }, "water_min_flow_24h": { "name": "Minflöde (24h)" },
+      "water_avg_hourly_24h": { "name": "Medel per timme (24h)" }, "water_peak_hourly_24h": { "name": "Topp per timme (24h)" },
+      "water_peak_hourly_7d": { "name": "Topp per timme (7d)" }, "water_avg_daily_7d": { "name": "Medel dagligen (7d)" },
+      "water_avg_daily_30d": { "name": "Medel dagligen (30d)" }, "water_peak_daily_30d": { "name": "Topp dagligen (30d)" }
+    },
+    "binary_sensor": { "water_leak": { "name": "Vattenläcka" } },
+    "event": { "water_leak": { "name": "Vattenläcka" } },
+    "number": { "water_tariff": { "name": "Vattentariff" }, "water_leak_threshold": { "name": "Tröskelvärde vattenläcka" } }
+  },
+  "issues": { "water_leak_detected": { "title": "Vattenläcka upptäckt", "description": "En möjlig vattenläcka har upptäckts. Minimiflödet under de senaste 24 timmarna överstiger det konfigurerade tröskelvärdet. Kontrollera dina rör för läckor." } },
+  "exceptions": { "connection_timeout": { "message": "Timeout vid anslutning till Droplet-enheten." } }
+}

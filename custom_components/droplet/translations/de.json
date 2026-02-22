@@ -1,0 +1,114 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Droplet",
+        "description": "Richten Sie Ihren Droplet-Wasserzähler ein.",
+        "data": {
+          "host": "IP-Adresse",
+          "token": "Kopplungscode"
+        }
+      },
+      "confirm": {
+        "title": "Droplet",
+        "description": "Droplet-Gerät bei {host} gefunden. Geben Sie den Kopplungscode ein, um eine Verbindung herzustellen.",
+        "data": {
+          "token": "Kopplungscode"
+        }
+      },
+      "options": {
+        "title": "Droplet-Optionen",
+        "description": "Konfigurieren Sie Wassertarif und Leckerkennungsempfindlichkeit.",
+        "data": {
+          "water_tariff": "Wassertarif",
+          "water_leak_threshold": "Leckerkennungsschwelle"
+        },
+        "data_description": {
+          "water_tariff": "Kosten pro Volumeneinheit Wasser (pro m³ oder pro Gallone). Wenn auf 0 gesetzt, melden die Kostensensoren null.",
+          "water_leak_threshold": "Mindestdurchflussrate (L/min), unterhalb derer ein kontinuierlicher Durchfluss nicht als Leck gilt. Z. B. 0 = jeder kontinuierliche Durchfluss über 24 Stunden löst einen Leckalarm aus, 0,05 = Durchflüsse unter 0,05 L/min werden ignoriert."
+        }
+      },
+      "reconfigure": {
+        "title": "Droplet neu konfigurieren",
+        "description": "Aktualisieren Sie die Verbindungseinstellungen für Ihr Droplet-Gerät.",
+        "data": {
+          "host": "IP-Adresse",
+          "token": "Kopplungscode"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Verbindung zum Droplet-Gerät nicht möglich. Überprüfen Sie die IP-Adresse und den Kopplungscode."
+    },
+    "abort": {
+      "already_configured": "Dieses Gerät ist bereits konfiguriert.",
+      "unique_id_mismatch": "Die Geräte-ID stimmt nicht mit der vorhandenen Konfiguration überein."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Droplet-Optionen",
+        "description": "Konfigurieren Sie Wassertarif und Leckerkennungsempfindlichkeit.",
+        "data": {
+          "water_tariff": "Wassertarif",
+          "water_leak_threshold": "Leckerkennungsschwelle"
+        },
+        "data_description": {
+          "water_tariff": "Kosten pro Volumeneinheit Wasser (pro m³ oder pro Gallone). Wenn auf 0 gesetzt, melden die Kostensensoren null.",
+          "water_leak_threshold": "Mindestdurchflussrate (L/min), unterhalb derer ein kontinuierlicher Durchfluss nicht als Leck gilt. Z. B. 0 = jeder kontinuierliche Durchfluss über 24 Stunden löst einen Leckalarm aus, 0,05 = Durchflüsse unter 0,05 L/min werden ignoriert."
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "water_flow_rate": { "name": "Wasserdurchfluss" },
+      "water_volume_delta": { "name": "Wasservolumen-Delta" },
+      "server_status": { "name": "Serverstatus" },
+      "signal_quality": { "name": "Signalqualität" },
+      "water_consumption_hourly": { "name": "Wasserverbrauch stündlich" },
+      "water_consumption_daily": { "name": "Wasserverbrauch täglich" },
+      "water_consumption_weekly": { "name": "Wasserverbrauch wöchentlich" },
+      "water_consumption_monthly": { "name": "Wasserverbrauch monatlich" },
+      "water_consumption_yearly": { "name": "Wasserverbrauch jährlich" },
+      "water_consumption_lifetime": { "name": "Wasserverbrauch gesamt" },
+      "water_cost_daily": { "name": "Wasserkosten täglich" },
+      "water_cost_weekly": { "name": "Wasserkosten wöchentlich" },
+      "water_cost_monthly": { "name": "Wasserkosten monatlich" },
+      "water_cost_yearly": { "name": "Wasserkosten jährlich" },
+      "water_cost_lifetime": { "name": "Wasserkosten gesamt" },
+      "water_avg_flow_1h": { "name": "Wasser Ø-Durchfluss (1h)" },
+      "water_peak_flow_24h": { "name": "Wasser Spitzendurchfluss (24h)" },
+      "water_peak_flow_7d": { "name": "Wasser Spitzendurchfluss (7d)" },
+      "water_min_flow_24h": { "name": "Wasser Min.-Durchfluss (24h)" },
+      "water_avg_hourly_24h": { "name": "Wasser Ø stündlich (24h)" },
+      "water_peak_hourly_24h": { "name": "Wasser Spitze stündlich (24h)" },
+      "water_peak_hourly_7d": { "name": "Wasser Spitze stündlich (7d)" },
+      "water_avg_daily_7d": { "name": "Wasser Ø täglich (7d)" },
+      "water_avg_daily_30d": { "name": "Wasser Ø täglich (30d)" },
+      "water_peak_daily_30d": { "name": "Wasser Spitze täglich (30d)" }
+    },
+    "binary_sensor": {
+      "water_leak": { "name": "Wasserleck" }
+    },
+    "event": {
+      "water_leak": { "name": "Wasserleck" }
+    },
+    "number": {
+      "water_tariff": { "name": "Wassertarif" },
+      "water_leak_threshold": { "name": "Wasserleck-Schwellenwert" }
+    }
+  },
+  "issues": {
+    "water_leak_detected": {
+      "title": "Wasserleck erkannt",
+      "description": "Ein mögliches Wasserleck wurde erkannt. Der minimale Durchfluss der letzten 24 Stunden überschreitet den konfigurierten Schwellenwert. Überprüfen Sie Ihre Wasserleitungen auf Lecks."
+    }
+  },
+  "exceptions": {
+    "connection_timeout": {
+      "message": "Zeitüberschreitung bei der Verbindung zum Droplet-Gerät."
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "config": {
+    "step": {
+      "user": { "title": "Droplet", "description": "Konfigurer Droplet-vannmåleren din.", "data": { "host": "IP-adresse", "token": "Paringskode" } },
+      "confirm": { "title": "Droplet", "description": "Droplet-enhet funnet på {host}. Skriv inn paringskoden for å koble til.", "data": { "token": "Paringskode" } },
+      "options": {
+        "title": "Droplet-alternativer",
+        "description": "Konfigurer vanntariff og lekkasjedeteksjonsfølsomhet.",
+        "data": {
+          "water_tariff": "Vanntariff",
+          "water_leak_threshold": "Lekkasjedeteksjonsterskel"
+        },
+        "data_description": {
+          "water_tariff": "Kostnad per volumenenhet vann (per m³ eller per gallon). Hvis satt til 0, vil kostnadssensorer rapportere null.",
+          "water_leak_threshold": "Minimum strømningshastighet (L/min) under hvilken kontinuerlig strøm ikke anses som lekkasje. F.eks. 0 = enhver kontinuerlig strøm over 24t utløser lekkasjevarsel, 0,05 = ignorer strømmer under 0,05 L/min."
+        }
+      },
+      "reconfigure": { "title": "Rekonfigurer Droplet", "description": "Oppdater tilkoblingsinnstillingene for Droplet-enheten din.", "data": { "host": "IP-adresse", "token": "Paringskode" } }
+    },
+    "error": { "cannot_connect": "Kan ikke koble til Droplet-enheten. Sjekk IP-adressen og paringskoden." },
+    "abort": { "already_configured": "Denne enheten er allerede konfigurert.", "unique_id_mismatch": "Enhets-ID-en samsvarer ikke med eksisterende konfigurasjon." }
+  },
+  "options": { "step": { "init": { "title": "Droplet-alternativer", "description": "Konfigurer vanntariff og lekkasjedeteksjonsfølsomhet.", "data": { "water_tariff": "Vanntariff", "water_leak_threshold": "Lekkasjedeteksjonsterskel" }, "data_description": { "water_tariff": "Kostnad per volumenenhet vann (per m³ eller per gallon). Hvis satt til 0, vil kostnadssensorer rapportere null.", "water_leak_threshold": "Minimum strømningshastighet (L/min) under hvilken kontinuerlig strøm ikke anses som lekkasje. F.eks. 0 = enhver kontinuerlig strøm over 24t utløser lekkasjevarsel, 0,05 = ignorer strømmer under 0,05 L/min." } } } },
+  "entity": {
+    "sensor": {
+      "water_flow_rate": { "name": "Vanngjennomstrømning" }, "water_volume_delta": { "name": "Vannvolum-delta" },
+      "server_status": { "name": "Serverstatus" }, "signal_quality": { "name": "Signalkvalitet" },
+      "water_consumption_hourly": { "name": "Vannforbruk per time" }, "water_consumption_daily": { "name": "Vannforbruk daglig" },
+      "water_consumption_weekly": { "name": "Vannforbruk ukentlig" }, "water_consumption_monthly": { "name": "Vannforbruk månedlig" },
+      "water_consumption_yearly": { "name": "Vannforbruk årlig" }, "water_consumption_lifetime": { "name": "Vannforbruk totalt" },
+      "water_cost_daily": { "name": "Vannkostnad daglig" }, "water_cost_weekly": { "name": "Vannkostnad ukentlig" },
+      "water_cost_monthly": { "name": "Vannkostnad månedlig" }, "water_cost_yearly": { "name": "Vannkostnad årlig" },
+      "water_cost_lifetime": { "name": "Vannkostnad totalt" },
+      "water_avg_flow_1h": { "name": "Gj.snittlig strømning (1t)" }, "water_peak_flow_24h": { "name": "Toppstrømning (24t)" },
+      "water_peak_flow_7d": { "name": "Toppstrømning (7d)" }, "water_min_flow_24h": { "name": "Min. strømning (24t)" },
+      "water_avg_hourly_24h": { "name": "Gj.snitt per time (24t)" }, "water_peak_hourly_24h": { "name": "Topp per time (24t)" },
+      "water_peak_hourly_7d": { "name": "Topp per time (7d)" }, "water_avg_daily_7d": { "name": "Gj.snitt daglig (7d)" },
+      "water_avg_daily_30d": { "name": "Gj.snitt daglig (30d)" }, "water_peak_daily_30d": { "name": "Topp daglig (30d)" }
+    },
+    "binary_sensor": { "water_leak": { "name": "Vannlekkasje" } },
+    "event": { "water_leak": { "name": "Vannlekkasje" } },
+    "number": { "water_tariff": { "name": "Vanntariff" }, "water_leak_threshold": { "name": "Vannlekkasjeterskel" } }
+  },
+  "issues": { "water_leak_detected": { "title": "Vannlekkasje oppdaget", "description": "En mulig vannlekkasje er oppdaget. Minimum gjennomstrømning de siste 24 timene overskrider den konfigurerte terskelen. Sjekk rørleggerarbeidet for lekkasjer." } },
+  "exceptions": { "connection_timeout": { "message": "Tidsavbrudd ved tilkobling til Droplet-enheten." } }
+}

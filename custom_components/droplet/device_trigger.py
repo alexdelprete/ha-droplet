@@ -8,9 +8,7 @@ import voluptuous as vol
 
 from homeassistant.components.device_automation import DEVICE_TRIGGER_BASE_SCHEMA
 from homeassistant.const import CONF_DEVICE_ID, CONF_DOMAIN, CONF_TYPE
-from homeassistant.core import CALLBACK_TYPE, HomeAssistant
-from homeassistant.helpers.trigger import TriggerActionType, TriggerInfo
-from homeassistant.helpers.typing import ConfigType
+from homeassistant.core import HomeAssistant
 
 from .const import DOMAIN
 
@@ -28,13 +26,11 @@ async def async_get_triggers(
     device_id: str,
 ) -> list[dict[str, Any]]:
     """Return a list of triggers."""
-    triggers = []
-    for trigger_type in TRIGGER_TYPES:
-        triggers.append(
-            {
-                CONF_DEVICE_ID: device_id,
-                CONF_DOMAIN: DOMAIN,
-                CONF_TYPE: trigger_type,
-            }
-        )
-    return triggers
+    return [
+        {
+            CONF_DEVICE_ID: device_id,
+            CONF_DOMAIN: DOMAIN,
+            CONF_TYPE: trigger_type,
+        }
+        for trigger_type in TRIGGER_TYPES
+    ]

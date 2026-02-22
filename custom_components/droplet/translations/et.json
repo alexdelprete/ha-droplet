@@ -1,0 +1,46 @@
+{
+  "config": {
+    "step": {
+      "user": { "title": "Droplet", "description": "Seadistage oma Droplet veemõõtja.", "data": { "host": "IP-aadress", "token": "Sidumiskood" } },
+      "confirm": { "title": "Droplet", "description": "Droplet seade leitud aadressil {host}. Sisestage sidumiskood ühendamiseks.", "data": { "token": "Sidumiskood" } },
+      "options": {
+        "title": "Droplet valikud",
+        "description": "Seadistage veetariif ja lekkide tuvastamise tundlikkus.",
+        "data": {
+          "water_tariff": "Veetariif",
+          "water_leak_threshold": "Lekke tuvastamise lävi"
+        },
+        "data_description": {
+          "water_tariff": "Kulu vee mahu ühiku kohta (m³ või galloni kohta). Kui väärtus on 0, näitavad kulud andureid nulli.",
+          "water_leak_threshold": "Minimaalne vooluhulk (L/min), mille puhul pidev vool ei loeta lekkeks. Nt 0 = iga pidev vool üle 24h käivitab lekke hoiatuse, 0,05 = eirake voolusid alla 0,05 L/min."
+        }
+      },
+      "reconfigure": { "title": "Konfigureeri Droplet ümber", "description": "Uuendage oma Droplet seadme ühenduse seadeid.", "data": { "host": "IP-aadress", "token": "Sidumiskood" } }
+    },
+    "error": { "cannot_connect": "Droplet seadmega ei saa ühendust. Kontrollige IP-aadressi ja sidumiskoodi." },
+    "abort": { "already_configured": "See seade on juba konfigureeritud.", "unique_id_mismatch": "Seadme ID ei ühti olemasoleva konfiguratsiooniga." }
+  },
+  "options": { "step": { "init": { "title": "Droplet valikud", "description": "Seadistage veetariif ja lekkide tuvastamise tundlikkus.", "data": { "water_tariff": "Veetariif", "water_leak_threshold": "Lekke tuvastamise lävi" }, "data_description": { "water_tariff": "Kulu vee mahu ühiku kohta (m³ või galloni kohta). Kui väärtus on 0, näitavad kulud andureid nulli.", "water_leak_threshold": "Minimaalne vooluhulk (L/min), mille puhul pidev vool ei loeta lekkeks. Nt 0 = iga pidev vool üle 24h käivitab lekke hoiatuse, 0,05 = eirake voolusid alla 0,05 L/min." } } } },
+  "entity": {
+    "sensor": {
+      "water_flow_rate": { "name": "Vee vooluhulk" }, "water_volume_delta": { "name": "Vee mahu delta" },
+      "server_status": { "name": "Serveri olek" }, "signal_quality": { "name": "Signaali kvaliteet" },
+      "water_consumption_hourly": { "name": "Veetarbimine tunnis" }, "water_consumption_daily": { "name": "Veetarbimine päevas" },
+      "water_consumption_weekly": { "name": "Veetarbimine nädalas" }, "water_consumption_monthly": { "name": "Veetarbimine kuus" },
+      "water_consumption_yearly": { "name": "Veetarbimine aastas" }, "water_consumption_lifetime": { "name": "Veetarbimine kokku" },
+      "water_cost_daily": { "name": "Vee maksumus päevas" }, "water_cost_weekly": { "name": "Vee maksumus nädalas" },
+      "water_cost_monthly": { "name": "Vee maksumus kuus" }, "water_cost_yearly": { "name": "Vee maksumus aastas" },
+      "water_cost_lifetime": { "name": "Vee maksumus kokku" },
+      "water_avg_flow_1h": { "name": "Keskmine vooluhulk (1h)" }, "water_peak_flow_24h": { "name": "Tippvooluhulk (24h)" },
+      "water_peak_flow_7d": { "name": "Tippvooluhulk (7p)" }, "water_min_flow_24h": { "name": "Min. vooluhulk (24h)" },
+      "water_avg_hourly_24h": { "name": "Keskmine tunnis (24h)" }, "water_peak_hourly_24h": { "name": "Tipp tunnis (24h)" },
+      "water_peak_hourly_7d": { "name": "Tipp tunnis (7p)" }, "water_avg_daily_7d": { "name": "Keskmine päevas (7p)" },
+      "water_avg_daily_30d": { "name": "Keskmine päevas (30p)" }, "water_peak_daily_30d": { "name": "Tipp päevas (30p)" }
+    },
+    "binary_sensor": { "water_leak": { "name": "Veeleke" } },
+    "event": { "water_leak": { "name": "Veeleke" } },
+    "number": { "water_tariff": { "name": "Veetariif" }, "water_leak_threshold": { "name": "Veelekke lävi" } }
+  },
+  "issues": { "water_leak_detected": { "title": "Veeleke tuvastatud", "description": "Tuvastati võimalik veeleke. Viimase 24 tunni minimaalne vooluhulk ületab seadistatud läve. Kontrollige torustikku lekkide suhtes." } },
+  "exceptions": { "connection_timeout": { "message": "Droplet seadmega ühenduse ajalõpp." } }
+}

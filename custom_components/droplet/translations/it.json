@@ -1,0 +1,58 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Droplet",
+        "description": "Configura il tuo contatore d'acqua Droplet.",
+        "data": { "host": "Indirizzo IP", "token": "Codice di associazione" }
+      },
+      "confirm": {
+        "title": "Droplet",
+        "description": "Dispositivo Droplet trovato all'indirizzo {host}. Inserisci il codice di associazione per connetterti.",
+        "data": { "token": "Codice di associazione" }
+      },
+      "options": {
+        "title": "Opzioni Droplet",
+        "description": "Configura la tariffa dell'acqua e la sensibilità di rilevamento perdite.",
+        "data": {
+          "water_tariff": "Tariffa dell'acqua",
+          "water_leak_threshold": "Soglia di rilevamento perdite"
+        },
+        "data_description": {
+          "water_tariff": "Costo per unità di volume d'acqua (per m³ o per gallone). Se impostato a 0, i sensori di costo riporteranno zero.",
+          "water_leak_threshold": "Portata minima (L/min) al di sotto della quale un flusso continuo non è considerato una perdita. Es.: 0 = qualsiasi flusso continuo nelle 24h attiva un'allerta perdite, 0,05 = ignora portate inferiori a 0,05 L/min."
+        }
+      },
+      "reconfigure": {
+        "title": "Riconfigura Droplet",
+        "description": "Aggiorna le impostazioni di connessione del tuo dispositivo Droplet.",
+        "data": { "host": "Indirizzo IP", "token": "Codice di associazione" }
+      }
+    },
+    "error": { "cannot_connect": "Impossibile connettersi al dispositivo Droplet. Controlla l'indirizzo IP e il codice di associazione." },
+    "abort": { "already_configured": "Questo dispositivo è già configurato.", "unique_id_mismatch": "L'ID del dispositivo non corrisponde alla configurazione esistente." }
+  },
+  "options": { "step": { "init": { "title": "Opzioni Droplet", "description": "Configura la tariffa dell'acqua e la sensibilità di rilevamento perdite.", "data": { "water_tariff": "Tariffa dell'acqua", "water_leak_threshold": "Soglia di rilevamento perdite" }, "data_description": { "water_tariff": "Costo per unità di volume d'acqua (per m³ o per gallone). Se impostato a 0, i sensori di costo riporteranno zero.", "water_leak_threshold": "Portata minima (L/min) al di sotto della quale un flusso continuo non è considerato una perdita. Es.: 0 = qualsiasi flusso continuo nelle 24h attiva un'allerta perdite, 0,05 = ignora portate inferiori a 0,05 L/min." } } } },
+  "entity": {
+    "sensor": {
+      "water_flow_rate": { "name": "Portata d'acqua" }, "water_volume_delta": { "name": "Delta volume d'acqua" },
+      "server_status": { "name": "Stato del server" }, "signal_quality": { "name": "Qualità del segnale" },
+      "water_consumption_hourly": { "name": "Consumo d'acqua orario" }, "water_consumption_daily": { "name": "Consumo d'acqua giornaliero" },
+      "water_consumption_weekly": { "name": "Consumo d'acqua settimanale" }, "water_consumption_monthly": { "name": "Consumo d'acqua mensile" },
+      "water_consumption_yearly": { "name": "Consumo d'acqua annuale" }, "water_consumption_lifetime": { "name": "Consumo d'acqua totale" },
+      "water_cost_daily": { "name": "Costo acqua giornaliero" }, "water_cost_weekly": { "name": "Costo acqua settimanale" },
+      "water_cost_monthly": { "name": "Costo acqua mensile" }, "water_cost_yearly": { "name": "Costo acqua annuale" },
+      "water_cost_lifetime": { "name": "Costo acqua totale" },
+      "water_avg_flow_1h": { "name": "Portata media (1h)" }, "water_peak_flow_24h": { "name": "Portata di picco (24h)" },
+      "water_peak_flow_7d": { "name": "Portata di picco (7g)" }, "water_min_flow_24h": { "name": "Portata minima (24h)" },
+      "water_avg_hourly_24h": { "name": "Media oraria (24h)" }, "water_peak_hourly_24h": { "name": "Picco orario (24h)" },
+      "water_peak_hourly_7d": { "name": "Picco orario (7g)" }, "water_avg_daily_7d": { "name": "Media giornaliera (7g)" },
+      "water_avg_daily_30d": { "name": "Media giornaliera (30g)" }, "water_peak_daily_30d": { "name": "Picco giornaliero (30g)" }
+    },
+    "binary_sensor": { "water_leak": { "name": "Perdita d'acqua" } },
+    "event": { "water_leak": { "name": "Perdita d'acqua" } },
+    "number": { "water_tariff": { "name": "Tariffa dell'acqua" }, "water_leak_threshold": { "name": "Soglia perdita d'acqua" } }
+  },
+  "issues": { "water_leak_detected": { "title": "Perdita d'acqua rilevata", "description": "È stata rilevata una possibile perdita d'acqua. La portata minima nelle ultime 24 ore supera la soglia configurata. Controlla le tubature." } },
+  "exceptions": { "connection_timeout": { "message": "Timeout di connessione al dispositivo Droplet." } }
+}

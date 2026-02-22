@@ -1,0 +1,46 @@
+{
+  "config": {
+    "step": {
+      "user": { "title": "Droplet", "description": "Määritä Droplet-vesimittarisi.", "data": { "host": "IP-osoite", "token": "Pariliitoskoodi" } },
+      "confirm": { "title": "Droplet", "description": "Droplet-laite löytyi osoitteesta {host}. Syötä pariliitoskoodi yhdistääksesi.", "data": { "token": "Pariliitoskoodi" } },
+      "options": {
+        "title": "Droplet-asetukset",
+        "description": "Määritä vesitariffi ja vuodonilmaisun herkkyys.",
+        "data": {
+          "water_tariff": "Vesitariffi",
+          "water_leak_threshold": "Vuodonilmaisun kynnysarvo"
+        },
+        "data_description": {
+          "water_tariff": "Kustannus vesitilavuuden yksikköä kohti (per m³ tai gallona). Jos arvoksi asetetaan 0, kustannusanturit näyttävät nollan.",
+          "water_leak_threshold": "Pienin virtausnopeus (L/min), jonka alapuolella jatkuvaa virtausta ei pidetä vuotona. Esim. 0 = mikä tahansa jatkuva virtaus yli 24h käynnistää vuotohälytyksen, 0,05 = ohita alle 0,05 L/min virtaukset."
+        }
+      },
+      "reconfigure": { "title": "Määritä Droplet uudelleen", "description": "Päivitä Droplet-laitteesi yhteysasetukset.", "data": { "host": "IP-osoite", "token": "Pariliitoskoodi" } }
+    },
+    "error": { "cannot_connect": "Droplet-laitteeseen ei saada yhteyttä. Tarkista IP-osoite ja pariliitoskoodi." },
+    "abort": { "already_configured": "Tämä laite on jo määritetty.", "unique_id_mismatch": "Laitteen tunniste ei vastaa olemassa olevaa määritystä." }
+  },
+  "options": { "step": { "init": { "title": "Droplet-asetukset", "description": "Määritä vesitariffi ja vuodonilmaisun herkkyys.", "data": { "water_tariff": "Vesitariffi", "water_leak_threshold": "Vuodonilmaisun kynnysarvo" }, "data_description": { "water_tariff": "Kustannus vesitilavuuden yksikköä kohti (per m³ tai gallona). Jos arvoksi asetetaan 0, kustannusanturit näyttävät nollan.", "water_leak_threshold": "Pienin virtausnopeus (L/min), jonka alapuolella jatkuvaa virtausta ei pidetä vuotona. Esim. 0 = mikä tahansa jatkuva virtaus yli 24h käynnistää vuotohälytyksen, 0,05 = ohita alle 0,05 L/min virtaukset." } } } },
+  "entity": {
+    "sensor": {
+      "water_flow_rate": { "name": "Veden virtausnopeus" }, "water_volume_delta": { "name": "Veden tilavuusdelta" },
+      "server_status": { "name": "Palvelimen tila" }, "signal_quality": { "name": "Signaalin laatu" },
+      "water_consumption_hourly": { "name": "Vedenkulutus tunneittain" }, "water_consumption_daily": { "name": "Vedenkulutus päivittäin" },
+      "water_consumption_weekly": { "name": "Vedenkulutus viikoittain" }, "water_consumption_monthly": { "name": "Vedenkulutus kuukausittain" },
+      "water_consumption_yearly": { "name": "Vedenkulutus vuosittain" }, "water_consumption_lifetime": { "name": "Vedenkulutus yhteensä" },
+      "water_cost_daily": { "name": "Vesikustannus päivittäin" }, "water_cost_weekly": { "name": "Vesikustannus viikoittain" },
+      "water_cost_monthly": { "name": "Vesikustannus kuukausittain" }, "water_cost_yearly": { "name": "Vesikustannus vuosittain" },
+      "water_cost_lifetime": { "name": "Vesikustannus yhteensä" },
+      "water_avg_flow_1h": { "name": "Keskivirtaus (1h)" }, "water_peak_flow_24h": { "name": "Huippuvirtaus (24h)" },
+      "water_peak_flow_7d": { "name": "Huippuvirtaus (7pv)" }, "water_min_flow_24h": { "name": "Min. virtaus (24h)" },
+      "water_avg_hourly_24h": { "name": "Keskiarvo tunneittain (24h)" }, "water_peak_hourly_24h": { "name": "Huippu tunneittain (24h)" },
+      "water_peak_hourly_7d": { "name": "Huippu tunneittain (7pv)" }, "water_avg_daily_7d": { "name": "Keskiarvo päivittäin (7pv)" },
+      "water_avg_daily_30d": { "name": "Keskiarvo päivittäin (30pv)" }, "water_peak_daily_30d": { "name": "Huippu päivittäin (30pv)" }
+    },
+    "binary_sensor": { "water_leak": { "name": "Vesivuoto" } },
+    "event": { "water_leak": { "name": "Vesivuoto" } },
+    "number": { "water_tariff": { "name": "Vesitariffi" }, "water_leak_threshold": { "name": "Vesivuodon kynnysarvo" } }
+  },
+  "issues": { "water_leak_detected": { "title": "Vesivuoto havaittu", "description": "Mahdollinen vesivuoto on havaittu. Viimeisen 24 tunnin minimivirtaus ylittää määritetyn kynnysarvon. Tarkista putkistosi vuotojen varalta." } },
+  "exceptions": { "connection_timeout": { "message": "Yhteyden aikakatkaisu Droplet-laitteeseen." } }
+}

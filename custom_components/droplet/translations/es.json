@@ -1,0 +1,114 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Droplet",
+        "description": "Configure su medidor de agua Droplet.",
+        "data": {
+          "host": "Dirección IP",
+          "token": "Código de emparejamiento"
+        }
+      },
+      "confirm": {
+        "title": "Droplet",
+        "description": "Dispositivo Droplet encontrado en {host}. Introduzca el código de emparejamiento para conectar.",
+        "data": {
+          "token": "Código de emparejamiento"
+        }
+      },
+      "options": {
+        "title": "Opciones de Droplet",
+        "description": "Configure la tarifa de agua y la sensibilidad de detección de fugas.",
+        "data": {
+          "water_tariff": "Tarifa de agua",
+          "water_leak_threshold": "Umbral de detección de fugas"
+        },
+        "data_description": {
+          "water_tariff": "Coste por unidad de volumen de agua (por m³ o por galón). Si se establece en 0, los sensores de coste reportarán cero.",
+          "water_leak_threshold": "Caudal mínimo (L/min) por debajo del cual el flujo continuo no se considera una fuga. Ej.: 0 = cualquier flujo continuo durante más de 24h activa una alerta de fuga, 0,05 = ignorar flujos por debajo de 0,05 L/min."
+        }
+      },
+      "reconfigure": {
+        "title": "Reconfigurar Droplet",
+        "description": "Actualice los ajustes de conexión de su dispositivo Droplet.",
+        "data": {
+          "host": "Dirección IP",
+          "token": "Código de emparejamiento"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "No se puede conectar al dispositivo Droplet. Verifique la dirección IP y el código de emparejamiento."
+    },
+    "abort": {
+      "already_configured": "Este dispositivo ya está configurado.",
+      "unique_id_mismatch": "El ID del dispositivo no coincide con la configuración existente."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opciones de Droplet",
+        "description": "Configure la tarifa de agua y la sensibilidad de detección de fugas.",
+        "data": {
+          "water_tariff": "Tarifa de agua",
+          "water_leak_threshold": "Umbral de detección de fugas"
+        },
+        "data_description": {
+          "water_tariff": "Coste por unidad de volumen de agua (por m³ o por galón). Si se establece en 0, los sensores de coste reportarán cero.",
+          "water_leak_threshold": "Caudal mínimo (L/min) por debajo del cual el flujo continuo no se considera una fuga. Ej.: 0 = cualquier flujo continuo durante más de 24h activa una alerta de fuga, 0,05 = ignorar flujos por debajo de 0,05 L/min."
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "water_flow_rate": { "name": "Caudal de agua" },
+      "water_volume_delta": { "name": "Delta de volumen de agua" },
+      "server_status": { "name": "Estado del servidor" },
+      "signal_quality": { "name": "Calidad de señal" },
+      "water_consumption_hourly": { "name": "Consumo de agua por hora" },
+      "water_consumption_daily": { "name": "Consumo de agua diario" },
+      "water_consumption_weekly": { "name": "Consumo de agua semanal" },
+      "water_consumption_monthly": { "name": "Consumo de agua mensual" },
+      "water_consumption_yearly": { "name": "Consumo de agua anual" },
+      "water_consumption_lifetime": { "name": "Consumo de agua total" },
+      "water_cost_daily": { "name": "Coste de agua diario" },
+      "water_cost_weekly": { "name": "Coste de agua semanal" },
+      "water_cost_monthly": { "name": "Coste de agua mensual" },
+      "water_cost_yearly": { "name": "Coste de agua anual" },
+      "water_cost_lifetime": { "name": "Coste de agua total" },
+      "water_avg_flow_1h": { "name": "Caudal medio (1h)" },
+      "water_peak_flow_24h": { "name": "Caudal pico (24h)" },
+      "water_peak_flow_7d": { "name": "Caudal pico (7d)" },
+      "water_min_flow_24h": { "name": "Caudal mínimo (24h)" },
+      "water_avg_hourly_24h": { "name": "Media por hora (24h)" },
+      "water_peak_hourly_24h": { "name": "Pico por hora (24h)" },
+      "water_peak_hourly_7d": { "name": "Pico por hora (7d)" },
+      "water_avg_daily_7d": { "name": "Media diaria (7d)" },
+      "water_avg_daily_30d": { "name": "Media diaria (30d)" },
+      "water_peak_daily_30d": { "name": "Pico diario (30d)" }
+    },
+    "binary_sensor": {
+      "water_leak": { "name": "Fuga de agua" }
+    },
+    "event": {
+      "water_leak": { "name": "Fuga de agua" }
+    },
+    "number": {
+      "water_tariff": { "name": "Tarifa de agua" },
+      "water_leak_threshold": { "name": "Umbral de fuga de agua" }
+    }
+  },
+  "issues": {
+    "water_leak_detected": {
+      "title": "Fuga de agua detectada",
+      "description": "Se ha detectado una posible fuga de agua. El caudal mínimo en las últimas 24 horas supera el umbral configurado. Revise sus tuberías en busca de fugas."
+    }
+  },
+  "exceptions": {
+    "connection_timeout": {
+      "message": "Tiempo de espera agotado al conectar con el dispositivo Droplet."
+    }
+  }
+}

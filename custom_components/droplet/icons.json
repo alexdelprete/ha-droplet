@@ -1,3 +1,99 @@
 {
-  "entity": {}
+  "entity": {
+    "sensor": {
+      "water_flow_rate": {
+        "default": "mdi:water-pump"
+      },
+      "water_volume_delta": {
+        "default": "mdi:water"
+      },
+      "server_status": {
+        "default": "mdi:web"
+      },
+      "signal_quality": {
+        "default": "mdi:signal"
+      },
+      "water_consumption_hourly": {
+        "default": "mdi:clock-outline"
+      },
+      "water_consumption_daily": {
+        "default": "mdi:calendar-today"
+      },
+      "water_consumption_weekly": {
+        "default": "mdi:calendar-week"
+      },
+      "water_consumption_monthly": {
+        "default": "mdi:calendar-month"
+      },
+      "water_consumption_yearly": {
+        "default": "mdi:calendar"
+      },
+      "water_consumption_lifetime": {
+        "default": "mdi:infinity"
+      },
+      "water_cost_daily": {
+        "default": "mdi:cash"
+      },
+      "water_cost_weekly": {
+        "default": "mdi:cash"
+      },
+      "water_cost_monthly": {
+        "default": "mdi:cash"
+      },
+      "water_cost_yearly": {
+        "default": "mdi:cash"
+      },
+      "water_cost_lifetime": {
+        "default": "mdi:cash"
+      },
+      "water_avg_flow_1h": {
+        "default": "mdi:chart-line"
+      },
+      "water_peak_flow_24h": {
+        "default": "mdi:chart-areaspline"
+      },
+      "water_peak_flow_7d": {
+        "default": "mdi:chart-areaspline"
+      },
+      "water_min_flow_24h": {
+        "default": "mdi:chart-bar"
+      },
+      "water_avg_hourly_24h": {
+        "default": "mdi:chart-line"
+      },
+      "water_peak_hourly_24h": {
+        "default": "mdi:chart-areaspline"
+      },
+      "water_peak_hourly_7d": {
+        "default": "mdi:chart-areaspline"
+      },
+      "water_avg_daily_7d": {
+        "default": "mdi:chart-line"
+      },
+      "water_avg_daily_30d": {
+        "default": "mdi:chart-line"
+      },
+      "water_peak_daily_30d": {
+        "default": "mdi:chart-areaspline"
+      }
+    },
+    "binary_sensor": {
+      "water_leak": {
+        "default": "mdi:water-alert"
+      }
+    },
+    "event": {
+      "water_leak": {
+        "default": "mdi:water-alert"
+      }
+    },
+    "number": {
+      "water_tariff": {
+        "default": "mdi:cash-multiple"
+      },
+      "water_leak_threshold": {
+        "default": "mdi:waves-arrow-up"
+      }
+    }
+  }
 }

@@ -1,0 +1,58 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Droplet",
+        "description": "Configurez votre compteur d'eau Droplet.",
+        "data": { "host": "Adresse IP", "token": "Code d'appairage" }
+      },
+      "confirm": {
+        "title": "Droplet",
+        "description": "Appareil Droplet trouvé à {host}. Entrez le code d'appairage pour vous connecter.",
+        "data": { "token": "Code d'appairage" }
+      },
+      "options": {
+        "title": "Options Droplet",
+        "description": "Configurez le tarif de l'eau et la sensibilité de détection de fuite.",
+        "data": {
+          "water_tariff": "Tarif de l'eau",
+          "water_leak_threshold": "Seuil de détection de fuite"
+        },
+        "data_description": {
+          "water_tariff": "Coût par unité de volume d'eau (par m³ ou par gallon). Si défini à 0, les capteurs de coût afficheront zéro.",
+          "water_leak_threshold": "Débit minimal (L/min) en dessous duquel un écoulement continu n'est pas considéré comme une fuite. Ex. : 0 = tout écoulement continu sur 24h déclenche une alerte de fuite, 0,05 = ignorer les débits inférieurs à 0,05 L/min."
+        }
+      },
+      "reconfigure": {
+        "title": "Reconfigurer Droplet",
+        "description": "Mettez à jour les paramètres de connexion de votre appareil Droplet.",
+        "data": { "host": "Adresse IP", "token": "Code d'appairage" }
+      }
+    },
+    "error": { "cannot_connect": "Impossible de se connecter à l'appareil Droplet. Vérifiez l'adresse IP et le code d'appairage." },
+    "abort": { "already_configured": "Cet appareil est déjà configuré.", "unique_id_mismatch": "L'identifiant de l'appareil ne correspond pas à la configuration existante." }
+  },
+  "options": { "step": { "init": { "title": "Options Droplet", "description": "Configurez le tarif de l'eau et la sensibilité de détection de fuite.", "data": { "water_tariff": "Tarif de l'eau", "water_leak_threshold": "Seuil de détection de fuite" }, "data_description": { "water_tariff": "Coût par unité de volume d'eau (par m³ ou par gallon). Si défini à 0, les capteurs de coût afficheront zéro.", "water_leak_threshold": "Débit minimal (L/min) en dessous duquel un écoulement continu n'est pas considéré comme une fuite. Ex. : 0 = tout écoulement continu sur 24h déclenche une alerte de fuite, 0,05 = ignorer les débits inférieurs à 0,05 L/min." } } } },
+  "entity": {
+    "sensor": {
+      "water_flow_rate": { "name": "Débit d'eau" }, "water_volume_delta": { "name": "Delta de volume d'eau" },
+      "server_status": { "name": "État du serveur" }, "signal_quality": { "name": "Qualité du signal" },
+      "water_consumption_hourly": { "name": "Consommation d'eau horaire" }, "water_consumption_daily": { "name": "Consommation d'eau journalière" },
+      "water_consumption_weekly": { "name": "Consommation d'eau hebdomadaire" }, "water_consumption_monthly": { "name": "Consommation d'eau mensuelle" },
+      "water_consumption_yearly": { "name": "Consommation d'eau annuelle" }, "water_consumption_lifetime": { "name": "Consommation d'eau totale" },
+      "water_cost_daily": { "name": "Coût de l'eau journalier" }, "water_cost_weekly": { "name": "Coût de l'eau hebdomadaire" },
+      "water_cost_monthly": { "name": "Coût de l'eau mensuel" }, "water_cost_yearly": { "name": "Coût de l'eau annuel" },
+      "water_cost_lifetime": { "name": "Coût de l'eau total" },
+      "water_avg_flow_1h": { "name": "Débit moyen (1h)" }, "water_peak_flow_24h": { "name": "Débit de pointe (24h)" },
+      "water_peak_flow_7d": { "name": "Débit de pointe (7j)" }, "water_min_flow_24h": { "name": "Débit minimum (24h)" },
+      "water_avg_hourly_24h": { "name": "Moyenne horaire (24h)" }, "water_peak_hourly_24h": { "name": "Pic horaire (24h)" },
+      "water_peak_hourly_7d": { "name": "Pic horaire (7j)" }, "water_avg_daily_7d": { "name": "Moyenne journalière (7j)" },
+      "water_avg_daily_30d": { "name": "Moyenne journalière (30j)" }, "water_peak_daily_30d": { "name": "Pic journalier (30j)" }
+    },
+    "binary_sensor": { "water_leak": { "name": "Fuite d'eau" } },
+    "event": { "water_leak": { "name": "Fuite d'eau" } },
+    "number": { "water_tariff": { "name": "Tarif de l'eau" }, "water_leak_threshold": { "name": "Seuil de fuite d'eau" } }
+  },
+  "issues": { "water_leak_detected": { "title": "Fuite d'eau détectée", "description": "Une fuite d'eau potentielle a été détectée. Le débit minimum des dernières 24 heures dépasse le seuil configuré. Vérifiez votre plomberie." } },
+  "exceptions": { "connection_timeout": { "message": "Délai d'attente dépassé lors de la connexion à l'appareil Droplet." } }
+}
